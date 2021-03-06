@@ -1,6 +1,7 @@
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 var taskIdCounter = 0;
+var pageContentEl = document.querySelector("#page-content");
 
 var taskFormHandler = function(event) {
   event.preventDefault();
@@ -41,7 +42,7 @@ var createTaskEl = function(taskDataObj) {
   console.dir(listItemEl);
 
   var taskActionsEl = createTaskActions(taskIdCounter);
-  console.log(taskActionsEl);
+  listItemEl.appendChild(taskActionsEl);
 
   // add list item to list
   tasksToDoEl.appendChild(listItemEl);
@@ -82,8 +83,8 @@ var createTaskActions = function(taskId) {
   for(var i = 0; i < statusChoices.length; i++) {
     //create option element
     var statusOptionEl =  document.createElement("option");
-    statusOptionEl.textContent = statusChoice[i];
-    statusOption.setAttribute("value", statusChoices[i]);
+    statusOptionEl.textContent = statusChoices[i];
+    statusOptionEl.setAttribute("value", statusChoices[i]);
 
     //append to select
     statusSelectEl.appendChild(statusOptionEl);
@@ -92,4 +93,9 @@ var createTaskActions = function(taskId) {
   return actionContainerEl;
 }
 
+var taskButtonHandler = function(event) {
+  console.log(event.target);
+}
+
 formEl.addEventListener("submit", taskFormHandler);
+pageContentEl.addEventListener("click", taskButtonHandler);
