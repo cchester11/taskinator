@@ -94,6 +94,9 @@ var createTaskActions = function(taskId) {
 }
 
 var taskButtonHandler = function(event) {
+  if (event.target.matches('delete-btn')) {
+    console.log('Its a match');
+  }
   console.log(event.target);
 }
 
